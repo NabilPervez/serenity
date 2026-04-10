@@ -13,7 +13,6 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/journal', icon: 'edit_note', label: 'Journal' },
   { to: '/timeline', icon: 'auto_stories', label: 'Timeline' },
   { to: '/breathe', icon: 'air', label: 'Breathe' },
-  { to: '/bedtime', icon: 'bedtime', label: 'Bedtime' },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {

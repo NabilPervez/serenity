@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { COPING_SKILLS, AFFIRMATIONS } from '../data/constants';
 import { getTodayChecklist, saveChecklist } from '../data/db';
@@ -169,6 +170,22 @@ export default function HomePage() {
               );
             })}
           </div>
+        </section>
+
+        {/* Good Evening / Bedtime Widget */}
+        <section className="animate-fade-up" style={{ animationDelay: '0.15s', marginTop: '1rem' }}>
+          <Link to="/bedtime" style={{ textDecoration: 'none' }}>
+            <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--gradient-silk)', color: 'white' }}>
+              <div style={{ background: 'rgba(255,255,255,0.2)', padding: '0.75rem', borderRadius: '50%', display: 'flex' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '2rem' }}>bedtime</span>
+              </div>
+              <div style={{ flex: 1 }}>
+                <h3 style={{ fontFamily: 'var(--font-headline)', fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>Good Evening</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.9, margin: 0 }}>Tap to start your bedtime routine</p>
+              </div>
+              <span className="material-symbols-outlined">chevron_right</span>
+            </div>
+          </Link>
         </section>
 
       </div>
