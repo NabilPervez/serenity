@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { addTimelineEntry, getTimelineEntries, type TimelineEntry } from '../data/db';
 import { MOODS } from '../data/constants';
-import { Toast, useToast } from '../components/Toast';
+import { Toast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 import TopBar from '../components/TopBar';
 
 function formatTime(timestamp: number): string {

@@ -14,7 +14,7 @@ export default function App() {
 
   useEffect(() => {
     updateStreak();
-  }, []);
+  }, [updateStreak]);
 
   if (!onboardingComplete) {
     return (
