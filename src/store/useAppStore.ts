@@ -2,8 +2,9 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface JournalEntry {
-  id: string; // unique ID
-  date: string; // YYYY-MM-DD
+  id: string;        // unique ID
+  date: string;      // YYYY-MM-DD (local timezone)
+  timestamp: number; // epoch ms — allows ordering multiple same-day entries
   responses: Record<string, string>; // promptId -> response text
 }
 
@@ -30,7 +31,7 @@ interface AppStore extends UserPreferences {
   setNotificationsEnabled: (enabled: boolean) => void;
   setWakingHours: (start: number, end: number) => void;
   setTimezone: (tz: string) => void;
-  saveJournalEntry: (entry: Omit<JournalEntry, "id" | "date">) => void;
+  saveJournalEntry: (entry: Omit<JournalEntry, 'id' | 'date' | 'timestamp'>) => void;
 }
 
 /** Returns today's date as YYYY-MM-DD in the user's LOCAL timezone (not UTC). */
@@ -75,6 +76,7 @@ export const useAppStore = create<AppStore>()(
             ...entry,
             id: crypto.randomUUID(),
             date: getTodayDateString(),
+            timestamp: Date.now(),
           }
         ]
       })),
