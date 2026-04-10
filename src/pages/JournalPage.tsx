@@ -11,7 +11,7 @@ export default function JournalPage() {
   const [responses, setResponses] = useState<Record<string, string>>({});
   
   const today = new Date().toISOString().split('T')[0];
-  const hasEntryToday = journalEntries.some(entry => entry.date === today);
+  const todayEntry = journalEntries.find(entry => entry.date === today);
 
   const handleTextChange = (promptId: string, value: string) => {
     setResponses(prev => ({
@@ -25,13 +25,12 @@ export default function JournalPage() {
     saveJournalEntry({
       responses
     });
-    // Maybe take user back home or just show a success state
-    navigate('/');
+    // Stay on this page to show the completed entry instead of navigating away.
   };
 
   return (
     <div className="page-container page-enter">
-      <header className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <header className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
           <h1 className="page-title">Journal</h1>
           <p className="page-subtitle">Reflect and release</p>
@@ -41,11 +40,35 @@ export default function JournalPage() {
         </Link>
       </header>
 
-      {hasEntryToday ? (
-        <div className="card glass-card fade-in" style={{ textAlign: 'center', padding: '2rem' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: '1rem' }}>task_alt</span>
-          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Journal Complete</h2>
-          <p style={{ color: 'var(--color-text-muted)' }}>You've already completed your journal entry for today. Great job checking in.</p>
+      {todayEntry ? (
+        <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBottom: '2rem' }}>
+          <div className="card glass-card fade-in" style={{ textAlign: 'center', padding: '2rem' }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: '1rem' }}>task_alt</span>
+            <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Journal Complete</h2>
+            <p style={{ color: 'var(--color-text-muted)' }}>You've completed your journal entry for today. Come back tomorrow!</p>
+          </div>
+          
+          <h3 style={{ marginTop: '1rem', fontFamily: 'var(--font-headline)', color: 'var(--color-primary)' }}>Your Responses</h3>
+          {journalPrompts.map((prompt) => (
+            <div key={prompt.id} className="card glass-card">
+              <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+                {prompt.title}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
+                {prompt.prompt}
+              </p>
+              <div style={{
+                background: 'var(--color-surface-container-low)',
+                padding: '1rem',
+                borderRadius: 'var(--radius-md)',
+                color: 'var(--color-on-surface)',
+                fontFamily: 'var(--font-body)',
+                whiteSpace: 'pre-wrap'
+              }}>
+                {todayEntry.responses[prompt.id] || <span style={{ color: 'var(--color-outline)' }}>No response provided.</span>}
+              </div>
+            </div>
+          ))}
         </div>
       ) : (
         <form onSubmit={handleSave} className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBottom: '2rem' }}>
@@ -62,22 +85,11 @@ export default function JournalPage() {
                 value={responses[prompt.id] || ''}
                 onChange={(e) => handleTextChange(prompt.id, e.target.value)}
                 placeholder="Write your thoughts..."
-                style={{
-                  width: '100%',
-                  minHeight: '100px',
-                  padding: '1rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  background: 'rgba(0,0,0,0.2)',
-                  color: 'inherit',
-                  fontFamily: 'inherit',
-                  resize: 'vertical'
-                }}
               />
             </div>
           ))}
           
-          <button type="submit" className="button button-primary" style={{ width: '100%', marginTop: '1rem' }}>
+          <button type="submit" className="btn-primary" style={{ marginTop: '1rem' }}>
             Save Journal Entry
           </button>
         </form>
