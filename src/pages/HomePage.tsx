@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { COPING_SKILLS, AFFIRMATIONS } from '../data/constants';
 import { getTodayChecklist, saveChecklist } from '../data/db';
-import { Toast, useToast } from '../components/Toast';
+import { Toast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 import TopBar from '../components/TopBar';
 
 function getTodayDate(): string {

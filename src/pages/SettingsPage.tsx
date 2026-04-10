@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { COPING_SKILLS, AFFIRMATIONS } from '../data/constants';
 import { getTimelineEntries, db } from '../data/db';
-import { Toast, useToast } from '../components/Toast';
+import { Toast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 
 export default function SettingsPage() {
   const navigate = useNavigate();

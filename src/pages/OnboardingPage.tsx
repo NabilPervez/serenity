@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { COPING_SKILLS, AFFIRMATIONS } from '../data/constants';
-import { Toast, useToast } from '../components/Toast';
+import { Toast } from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 
 type Step = 'welcome' | 'skills' | 'affirmations' | 'permissions';
 
