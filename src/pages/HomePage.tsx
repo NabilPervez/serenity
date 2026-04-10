@@ -8,7 +8,11 @@ import { useToast } from '../hooks/useToast';
 import TopBar from '../components/TopBar';
 
 function getTodayDate(): string {
-  return new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 }
 
 function getGreeting(): string {
@@ -66,8 +70,20 @@ export default function HomePage() {
     if (!checkedSkills.includes(id)) showToast('Coping skill practiced ✓');
   };
 
-  const mySkills = COPING_SKILLS.filter((s) => selectedSkillIds.includes(s.id));
-  const myAffirmations = AFFIRMATIONS.filter((a) => selectedAffirmationIds.includes(a.id));
+  const mySkills = COPING_SKILLS
+    .filter((s) => selectedSkillIds.includes(s.id))
+    .sort((a, b) => {
+      const aChecked = checkedSkills.includes(a.id) ? 1 : 0;
+      const bChecked = checkedSkills.includes(b.id) ? 1 : 0;
+      return aChecked - bChecked;
+    });
+  const myAffirmations = AFFIRMATIONS
+    .filter((a) => selectedAffirmationIds.includes(a.id))
+    .sort((a, b) => {
+      const aChecked = checkedAffirmations.includes(a.id) ? 1 : 0;
+      const bChecked = checkedAffirmations.includes(b.id) ? 1 : 0;
+      return aChecked - bChecked;
+    });
 
   const totalTasks = myAffirmations.length + mySkills.length;
   const completedTasks = checkedAffirmations.length + checkedSkills.length;

@@ -230,9 +230,8 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-around;
   align-items: center;
   padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
-  background: rgba(252, 249, 243, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--color-surface-container-low);
+  border-top: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   z-index: 100;
   box-shadow: var(--shadow-nav);
@@ -279,9 +278,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 1.5rem;
   position: sticky;
   top: 0;
-  background: rgba(252, 249, 243, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
   z-index: 50;
 }
 
