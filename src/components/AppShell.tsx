@@ -10,6 +10,7 @@ interface NavItem {
 // Settings removed from nav — it's now a cog on each page's top bar
 const NAV_ITEMS: NavItem[] = [
   { to: '/', icon: 'fact_check', label: 'Home' },
+  { to: '/journal', icon: 'edit_note', label: 'Journal' },
   { to: '/timeline', icon: 'auto_stories', label: 'Timeline' },
   { to: '/breathe', icon: 'air', label: 'Breathe' },
   { to: '/bedtime', icon: 'bedtime', label: 'Bedtime' },

@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+interface JournalEntry {
+  id: string; // unique ID
+  date: string; // YYYY-MM-DD
+  responses: Record<string, string>; // promptId -> response text
+}
+
 interface UserPreferences {
   selectedSkillIds: string[];       // exactly 5
   selectedAffirmationIds: string[]; // exactly 7
@@ -11,6 +17,7 @@ interface UserPreferences {
   wakingHoursStart: number; // 8 = 8AM
   wakingHoursEnd: number;   // 20 = 8PM
   timezone: string;
+  journalEntries: JournalEntry[]; // added for journal
 }
 
 interface AppStore extends UserPreferences {
@@ -23,6 +30,7 @@ interface AppStore extends UserPreferences {
   setNotificationsEnabled: (enabled: boolean) => void;
   setWakingHours: (start: number, end: number) => void;
   setTimezone: (tz: string) => void;
+  saveJournalEntry: (entry: Omit<JournalEntry, "id" | "date">) => void;
 }
 
 function getTodayDateString(): string {
@@ -42,6 +50,7 @@ export const useAppStore = create<AppStore>()(
       wakingHoursStart: 8,
       wakingHoursEnd: 20,
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      journalEntries: [],
 
       setSelectedSkills: (ids) => set({ selectedSkillIds: ids }),
       setSelectedAffirmations: (ids) => set({ selectedAffirmationIds: ids }),
@@ -51,7 +60,19 @@ export const useAppStore = create<AppStore>()(
         onboardingComplete: false,
         selectedSkillIds: [],
         selectedAffirmationIds: [],
+        journalEntries: [],
       }),
+
+      saveJournalEntry: (entry) => set((state) => ({
+        journalEntries: [
+          ...state.journalEntries,
+          {
+            ...entry,
+            id: crypto.randomUUID(),
+            date: getTodayDateString(),
+          }
+        ]
+      })),
 
       updateStreak: () => {
         const today = getTodayDateString();

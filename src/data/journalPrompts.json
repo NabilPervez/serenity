@@ -1,0 +1,32 @@
+[
+  {
+    "id": "general",
+    "title": "General",
+    "prompt": "Tell me about your day"
+  },
+  {
+    "id": "gratitude",
+    "title": "Gratitude",
+    "prompt": "List at least 3 things you are grateful for."
+  },
+  {
+    "id": "worry_dump",
+    "title": "The Worry Dump",
+    "prompt": "List absolutely everything taking up space in your mind right now. Get it all on paper so you don't have to hold it in your head overnight."
+  },
+  {
+    "id": "worry_postponement",
+    "title": "Worry Postponement",
+    "prompt": "Pick the biggest worry from your list. What specific time tomorrow will you dedicate 15 minutes to actively think about it?"
+  },
+  {
+    "id": "preparation",
+    "title": "Preparation",
+    "prompt": "What is one small, simple thing you can do tonight to make tomorrow morning slightly easier?"
+  },
+  {
+    "id": "positive_anchoring",
+    "title": "Positive Anchoring",
+    "prompt": "What is one thing you survived or handled well today, no matter how small?"
+  }
+]

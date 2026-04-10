@@ -8,6 +8,7 @@ import TimelinePage from './pages/TimelinePage';
 import BreathePage from './pages/BreathePage';
 import BedtimePage from './pages/BedtimePage';
 import SettingsPage from './pages/SettingsPage';
+import JournalPage from './pages/JournalPage';
 
 export default function App() {
   const { onboardingComplete, updateStreak } = useAppStore();
@@ -33,6 +34,7 @@ export default function App() {
           <AppShell>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/journal" element={<JournalPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/breathe" element={<BreathePage />} />
               <Route path="/bedtime" element={<BedtimePage />} />
