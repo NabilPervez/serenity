@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tactical Serenity - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "background": "#fcf9f3",
+                    "primary-fixed": "#d5e9bf",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e5e2dc",
+                    "outline": "#75786e",
+                    "surface-container-high": "#ebe8e2",
+                    "surface-container-low": "#f6f3ed",
+                    "outline-variant": "#c5c8bc",
+                    "on-primary-container": "#324224",
+                    "on-secondary-fixed": "#3c0700",
+                    "tertiary-container": "#9bae9d",
+                    "error": "#ba1a1a",
+                    "tertiary": "#516354",
+                    "surface-container-highest": "#e5e2dc",
+                    "inverse-surface": "#31312d",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fcf9f3",
+                    "tertiary-fixed": "#d4e8d5",
+                    "secondary-container": "#fe9c84",
+                    "surface-tint": "#526442",
+                    "secondary-fixed": "#ffdad2",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "on-primary-fixed": "#111f05",
+                    "on-surface": "#1c1c18",
+                    "on-tertiary-container": "#314235",
+                    "on-primary-fixed-variant": "#3b4c2c",
+                    "on-secondary-container": "#783220",
+                    "inverse-primary": "#b9cda4",
+                    "secondary": "#954835",
+                    "on-tertiary-fixed": "#0f1f14",
+                    "on-tertiary-fixed-variant": "#394b3d",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary": "#526442",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dcdad4",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1c1c18",
+                    "tertiary-fixed-dim": "#b8ccba",
+                    "surface": "#fcf9f3",
+                    "primary-fixed-dim": "#b9cda4",
+                    "surface-container": "#f0eee8",
+                    "on-surface-variant": "#44483f",
+                    "inverse-on-surface": "#f3f0ea",
+                    "primary-container": "#9caf88",
+                    "on-secondary-fixed-variant": "#773120"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- Top Navigation Anchor (Manual Suppression of Nav but maintaining TopAppBar styles for branding) -->
+<header class="bg-background flex justify-between items-center w-full px-6 py-8">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-[0.95]">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<div class="font-headline font-extrabold text-xl tracking-tighter text-primary">
+            Tactical Serenity
+        </div>
+<div class="w-10"></div> <!-- Balance spacer -->
+</header>
+<main class="flex-1 max-w-2xl mx-auto w-full px-6 flex flex-col">
+<!-- Step Indicator -->
+<div class="flex flex-col items-center mb-8">
+<span class="font-label text-xs font-semibold tracking-widest text-primary bg-primary-fixed/30 px-4 py-1.5 rounded-full uppercase mb-6">Step 1 of 2</span>
+<h1 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-center text-on-surface mb-3">
+                Choose Your Mantras
+            </h1>
+<p class="text-on-surface-variant text-lg text-center max-w-sm">
+                Select 7 paths of intention for your journey.
+            </p>
+</div>
+<!-- Progress/Selection Tracker -->
+<div class="bg-surface-container-low rounded-lg p-4 mb-8 flex items-center justify-between">
+<div class="flex gap-1.5">
+<!-- Selected dots -->
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<span class="font-label text-sm font-medium text-primary">3 of 7 selected</span>
+</div>
+<!-- Scrollable Bento Selection Area -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-32">
+<!-- Selected Card State -->
+<div class="group relative bg-primary-container text-on-primary-container p-6 rounded-lg transition-all duration-300 active:scale-[0.98] border-none ring-2 ring-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="material-symbols-outlined text-primary/40">self_care</span>
+</div>
+<h3 class="font-headline text-xl font-bold">I am enough</h3>
+<p class="text-on-primary-container/80 text-sm mt-1">Acceptance and worthiness.</p>
+</div>
+<!-- Inactive Card State -->
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">anchor</span>
+</div>
+<h3 class="font-headline text-xl font-bold">My breath is an anchor</h3>
+<p class="text-on-surface-variant text-sm mt-1">Grounding through presence.</p>
+</div>
+<div class="group relative bg-primary-container text-on-primary-container p-6 rounded-lg transition-all duration-300 active:scale-[0.98] ring-2 ring-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="material-symbols-outlined text-primary/40">psychology</span>
+</div>
+<h3 class="font-headline text-xl font-bold">I trust the process</h3>
+<p class="text-on-primary-container/80 text-sm mt-1">Relinquishing control.</p>
+</div>
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">spa</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Peace begins with me</h3>
+<p class="text-on-surface-variant text-sm mt-1">Internal harmony.</p>
+</div>
+<div class="group relative bg-primary-container text-on-primary-container p-6 rounded-lg transition-all duration-300 active:scale-[0.98] ring-2 ring-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="material-symbols-outlined text-primary/40">wb_sunny</span>
+</div>
+<h3 class="font-headline text-xl font-bold">I radiate light</h3>
+<p class="text-on-primary-container/80 text-sm mt-1">Positive energy and joy.</p>
+</div>
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">favorite</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Compassion is my guide</h3>
+<p class="text-on-surface-variant text-sm mt-1">Kindness toward self.</p>
+</div>
+<!-- Terracotta Accent Card -->
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-secondary transition-colors"></div>
+<span class="material-symbols-outlined text-secondary/40">filter_vintage</span>
+</div>
+<h3 class="font-headline text-xl font-bold">I am blooming</h3>
+<p class="text-on-surface-variant text-sm mt-1">Continuous growth.</p>
+</div>
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">eco</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Rooted and resilient</h3>
+<p class="text-on-surface-variant text-sm mt-1">Strength in adversity.</p>
+</div>
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">cloud</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Thoughts pass like clouds</h3>
+<p class="text-on-surface-variant text-sm mt-1">Non-attachment practice.</p>
+</div>
+<div class="group relative bg-surface-container-lowest p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-high active:scale-[0.98]">
+<div class="flex justify-between items-start mb-2">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="material-symbols-outlined text-on-surface-variant/40">nights_stay</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Rest is productive</h3>
+<p class="text-on-surface-variant text-sm mt-1">Honoring my energy.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-md p-6 pb-10 z-50">
+<div class="max-w-2xl mx-auto">
+<!-- Disabled State: bg-surface-container-highest text-outline -->
+<button class="w-full bg-surface-container-highest text-outline cursor-not-allowed font-headline font-bold py-5 rounded-full transition-all duration-300 text-lg shadow-sm">
+                Continue
+            </button>
+<p class="text-center text-on-surface-variant text-xs mt-4 font-medium opacity-60">
+                Select 4 more to proceed
+            </p>
+</div>
+</div>
+<!-- Visual Texture Element (Background Decor) -->
+<div class="fixed top-0 right-0 -z-10 pointer-events-none opacity-20">
+<div class="w-96 h-96 bg-primary-container/30 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/4"></div>
+</div>
+<div class="fixed bottom-0 left-0 -z-10 pointer-events-none opacity-20">
+<div class="w-[30rem] h-[30rem] bg-secondary-container/20 blur-[120px] rounded-full -translate-x-1/2 translate-y-1/4"></div>
+</div>
+</body></html>

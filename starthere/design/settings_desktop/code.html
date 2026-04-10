@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3ed",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#526442",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ebe8e2",
+                        "on-secondary-container": "#783220",
+                        "primary": "#526442",
+                        "tertiary-fixed-dim": "#b8ccba",
+                        "inverse-primary": "#b9cda4",
+                        "outline-variant": "#c5c8bc",
+                        "surface-container": "#f0eee8",
+                        "inverse-surface": "#31312d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#314235",
+                        "on-primary-fixed-variant": "#3b4c2c",
+                        "primary-fixed-dim": "#b9cda4",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1c1c18",
+                        "outline": "#75786e",
+                        "surface": "#fcf9f3",
+                        "surface-dim": "#dcdad4",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad2",
+                        "on-secondary-fixed": "#3c0700",
+                        "tertiary-fixed": "#d4e8d5",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-primary-fixed": "#111f05",
+                        "secondary-container": "#fe9c84",
+                        "primary-fixed": "#d5e9bf",
+                        "on-primary-container": "#324224",
+                        "secondary-fixed-dim": "#ffb4a2",
+                        "primary-container": "#9caf88",
+                        "on-secondary-fixed-variant": "#773120",
+                        "background": "#fcf9f3",
+                        "tertiary": "#516354",
+                        "on-tertiary-fixed-variant": "#394b3d",
+                        "on-background": "#1c1c18",
+                        "surface-bright": "#fcf9f3",
+                        "surface-variant": "#e5e2dc",
+                        "on-surface-variant": "#44483f",
+                        "secondary": "#954835",
+                        "tertiary-container": "#9bae9d",
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#0f1f14",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Navigation Drawer (Desktop Sidebar) -->
+<aside class="fixed left-0 top-0 h-full py-8 flex flex-col border-r border-outline-variant/20 bg-surface-container-low dark:bg-[#1c1c18] h-screen w-64 rounded-r-xl hidden md:flex">
+<div class="text-2xl font-black text-primary tracking-tight mb-8 px-6 font-headline">Serenity</div>
+<nav class="flex-1 px-2">
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-3 mb-2 transition-all font-headline font-semibold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="fact_check">fact_check</span>
+                Home
+            </a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-3 mb-2 transition-all font-headline font-semibold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="auto_stories">auto_stories</span>
+                Timeline
+            </a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container rounded-full px-4 py-3 mb-2 transition-all font-headline font-semibold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="air">air</span>
+                Breathe
+            </a>
+<a class="bg-gradient-to-r from-primary to-primary-container text-white rounded-full px-4 py-3 mb-2 flex items-center font-headline font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="text-xs font-medium text-on-surface-variant mb-2">Daily Streak</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-lg font-bold text-on-surface">12 Days</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen p-6 lg:p-12">
+<div class="max-w-6xl mx-auto">
+<!-- Top App Bar (Header) -->
+<header class="flex items-center justify-between w-full mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="spa">spa</span>
+<h1 class="font-headline font-bold text-3xl tracking-tight text-on-surface">Personalize Your Journey</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="portrait of a calm woman with a soft smile and neutral background in natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbkIH4M9HVMZE3wZsjVD83DM0DAxzSLLiHbZtyLxfrx0hQnDNr031V0FqORHov7NGpslaz01942Vp7GLkZ0mub9u7efsTghGfs62DUCbgPBgZJO8DpV2NxxTZTyTtznKb_LsoH94B3FKvb9oYhSP72Lp2UT56yP-7jUcHnLXuYxq9p_R1sJ2Ssywoe_jKiwXawV-QIwKybbq0N_psk66apx_WVxdvlZZyJTuEOkFQSBBkoI4d1aWqeNdk3cBJe2Qy_yKh2L0QSidJM"/>
+</div>
+</div>
+</header>
+<!-- Settings Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Core Preferences -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Skill Selection Section -->
+<section class="bg-surface-container-lowest rounded-lg p-8 shadow-[0px_12px_32px_rgba(44,61,48,0.06)]">
+<div class="mb-6">
+<h2 class="font-headline font-bold text-xl text-on-surface mb-1">Select Your Focus Skills</h2>
+<p class="text-on-surface-variant text-sm">Choose 5 techniques you'd like to master this month.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<label class="group flex items-center p-4 rounded-lg bg-surface hover:bg-primary/5 cursor-pointer transition-all border border-outline-variant/10">
+<input checked="" class="rounded-full text-primary focus:ring-primary h-5 w-5 border-outline mr-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Mindful Observation</span>
+<span class="text-xs text-on-surface-variant">Grounding in the present</span>
+</div>
+</label>
+<label class="group flex items-center p-4 rounded-lg bg-surface hover:bg-primary/5 cursor-pointer transition-all border border-outline-variant/10">
+<input checked="" class="rounded-full text-primary focus:ring-primary h-5 w-5 border-outline mr-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Box Breathing</span>
+<span class="text-xs text-on-surface-variant">Regulating heart rate</span>
+</div>
+</label>
+<label class="group flex items-center p-4 rounded-lg bg-surface hover:bg-primary/5 cursor-pointer transition-all border border-outline-variant/10">
+<input checked="" class="rounded-full text-primary focus:ring-primary h-5 w-5 border-outline mr-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Cognitive Reframing</span>
+<span class="text-xs text-on-surface-variant">Managing intrusive thoughts</span>
+</div>
+</label>
+<label class="group flex items-center p-4 rounded-lg bg-surface hover:bg-primary/5 cursor-pointer transition-all border border-outline-variant/10">
+<input checked="" class="rounded-full text-primary focus:ring-primary h-5 w-5 border-outline mr-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Body Scanning</span>
+<span class="text-xs text-on-surface-variant">Releasing physical tension</span>
+</div>
+</label>
+<label class="group flex items-center p-4 rounded-lg bg-surface hover:bg-primary/5 cursor-pointer transition-all border border-outline-variant/10">
+<input checked="" class="rounded-full text-primary focus:ring-primary h-5 w-5 border-outline mr-4" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Radical Acceptance</span>
+<span class="text-xs text-on-surface-variant">Letting go of control</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Affirmation Selection Section -->
+<section class="bg-surface-container rounded-lg p-8">
+<div class="mb-6">
+<h2 class="font-headline font-bold text-xl text-on-surface mb-1">Daily Affirmations</h2>
+<p class="text-on-surface-variant text-sm">Pick 7 mantras for your morning journaling sessions.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">I am capable of change</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-primary-container/20 transition-all">My peace is a priority</button>
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">Inhale calm, exhale worry</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-primary-container/20 transition-all">I trust the process</button>
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">This too shall pass</button>
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">I am present in this moment</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-sm font-medium hover:bg-primary-container/20 transition-all">I nourish my soul</button>
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">Kindness begins with me</button>
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-sm transition-transform hover:scale-95">I choose hope today</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Utility & Notifications -->
+<div class="lg:col-span-5 space-y-8">
+<!-- Notification Card -->
+<section class="bg-surface-container-lowest rounded-lg p-8 shadow-[0px_12px_32px_rgba(44,61,48,0.06)] overflow-hidden relative">
+<div class="relative z-10">
+<h2 class="font-headline font-bold text-xl text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+                                Nudge Preferences
+                            </h2>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-semibold text-sm">Morning Intention</p>
+<p class="text-xs text-on-surface-variant">Daily check-in at 8:00 AM</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full absolute right-1"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-semibold text-sm">Breathing Reminders</p>
+<p class="text-xs text-on-surface-variant">Gentle nudges every 4 hours</p>
+</div>
+<div class="w-12 h-6 bg-outline-variant rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full absolute left-1"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-semibold text-sm">Weekly Progress Report</p>
+<p class="text-xs text-on-surface-variant">Sent every Sunday evening</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full absolute right-1"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl"></div>
+</section>
+<!-- Data & Privacy Card -->
+<section class="bg-surface-container-high rounded-lg p-8">
+<h2 class="font-headline font-bold text-xl text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">encrypted</span>
+                            Your Sanctuary Data
+                        </h2>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
+                            Your journey is private. You can export your full journal history and progress metrics at any time.
+                        </p>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-4 rounded-lg bg-surface-container-lowest hover:bg-white/80 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">download</span>
+<span class="text-sm font-semibold">Export Journal (.pdf)</span>
+</div>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 rounded-lg bg-surface-container-lowest hover:bg-white/80 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">database</span>
+<span class="text-sm font-semibold">Download Progress Data (.csv)</span>
+</div>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">delete_forever</span>
+<span class="text-sm font-semibold">Clear All Data</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Quote Card (Asymmetric Layout element) -->
+<div class="mt-8 p-1 relative rounded-lg overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-20"></div>
+<div class="relative bg-surface rounded-lg p-6 italic text-on-surface-variant text-sm border-l-4 border-primary">
+                            "The soul always knows what to do to heal itself. The challenge is to silence the mind."
+                        </div>
+</div>
+</div>
+</div>
+<!-- Sticky Save Footer (Task Focused - Primary Intent) -->
+<footer class="mt-12 flex justify-end gap-4 pb-12 border-t border-outline-variant/10 pt-8">
+<button class="px-8 py-4 rounded-full font-headline font-bold text-on-surface-variant hover:bg-surface-container transition-all">
+                    Discard Changes
+                </button>
+<button class="px-10 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold shadow-lg transition-transform hover:scale-95 active:scale-90">
+                    Finish Onboarding
+                </button>
+</footer>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only Suppression Logic) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-surface-container-lowest/80 backdrop-blur-md rounded-t-lg z-50 shadow-[0px_-12px_32px_rgba(44,61,48,0.06)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="text-xs font-medium font-body mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="text-xs font-medium font-body mt-1">Journal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="text-xs font-medium font-body mt-1">Breathe</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary/20 text-primary rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-xs font-medium font-body mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

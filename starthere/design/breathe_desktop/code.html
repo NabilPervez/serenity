@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serenity | Box Breathing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Bézier for the Sanctuary feel */
+        .ease-sanctuary {
+            transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3ed",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#526442",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ebe8e2",
+                        "on-secondary-container": "#783220",
+                        "primary": "#526442",
+                        "tertiary-fixed-dim": "#b8ccba",
+                        "inverse-primary": "#b9cda4",
+                        "outline-variant": "#c5c8bc",
+                        "surface-container": "#f0eee8",
+                        "inverse-surface": "#31312d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#314235",
+                        "on-primary-fixed-variant": "#3b4c2c",
+                        "primary-fixed-dim": "#b9cda4",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1c1c18",
+                        "outline": "#75786e",
+                        "surface": "#fcf9f3",
+                        "surface-dim": "#dcdad4",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad2",
+                        "on-secondary-fixed": "#3c0700",
+                        "tertiary-fixed": "#d4e8d5",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-primary-fixed": "#111f05",
+                        "secondary-container": "#fe9c84",
+                        "primary-fixed": "#d5e9bf",
+                        "on-primary-container": "#324224",
+                        "secondary-fixed-dim": "#ffb4a2",
+                        "primary-container": "#9caf88",
+                        "on-secondary-fixed-variant": "#773120",
+                        "background": "#fcf9f3",
+                        "tertiary": "#516354",
+                        "on-tertiary-fixed-variant": "#394b3d",
+                        "on-background": "#1c1c18",
+                        "surface-bright": "#fcf9f3",
+                        "surface-variant": "#e5e2dc",
+                        "on-surface-variant": "#44483f",
+                        "secondary": "#954835",
+                        "tertiary-container": "#9bae9d",
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#0f1f14",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- Immersive Shell Overlay (No Navigation Rule Applied) -->
+<div class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+<!-- Ambient Decorative Layer (Tonal Layering) -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+<div class="w-[120%] h-[120%] bg-gradient-to-tr from-[#fcf9f3] via-[#f6f3ed] to-[#fcf9f3] opacity-100"></div>
+<!-- Decorative Organic Shapes -->
+<div class="absolute top-[-10%] right-[-5%] w-[40rem] h-[40rem] bg-primary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[35rem] h-[35rem] bg-secondary-container/5 rounded-full blur-[80px]"></div>
+</div>
+<!-- Exit Button (Task-Focused suppression rule) -->
+<header class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="spa">spa</span>
+<span class="font-headline font-extrabold text-primary tracking-tight text-xl">Serenity</span>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-lowest text-on-surface-variant rounded-full hover:bg-surface-container transition-all ease-sanctuary group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="close">close</span>
+<span class="font-label text-sm font-semibold">Exit Focus</span>
+</button>
+</header>
+<!-- Main Breathing Canvas -->
+<main class="relative z-10 w-full max-w-4xl px-6 flex flex-col items-center text-center">
+<!-- Instruction Text -->
+<div class="mb-12">
+<p class="text-on-surface-variant font-label tracking-[0.2em] mb-4 text-xs font-semibold uppercase">Box Breathing</p>
+<h1 class="font-headline text-6xl md:text-7xl font-bold text-primary tracking-tight">Inhale</h1>
+</div>
+<!-- The Breathing Pebble (Visualizer) -->
+<div class="relative flex items-center justify-center">
+<!-- Outer Pulse Ring -->
+<div class="absolute w-[400px] h-[400px] rounded-full border border-primary-container/20 animate-pulse"></div>
+<!-- Main Breathing Visualizer -->
+<div class="w-[320px] h-[320px] rounded-full bg-gradient-to-br from-primary to-primary-container shadow-2xl flex items-center justify-center p-8 transition-all duration-[4000ms] scale-100 ring-[24px] ring-surface-container">
+<!-- Glassmorphism Inner Core -->
+<div class="w-full h-full rounded-full bg-white/20 backdrop-blur-md flex flex-col items-center justify-center border border-white/30">
+<span class="text-white font-headline text-5xl font-black">4</span>
+<span class="text-white/80 font-label text-xs tracking-widest mt-1">SECONDS</span>
+</div>
+</div>
+<!-- Guidance Nodes (Asymmetric Layout Hint) -->
+<div class="absolute -top-4 right-0 px-4 py-2 bg-surface-container-lowest rounded-full shadow-sm border border-outline-variant/10">
+<p class="text-[10px] font-bold text-primary-container tracking-wider uppercase">Focus on the center</p>
+</div>
+</div>
+<!-- Descriptive Text Hint -->
+<div class="mt-16 max-w-sm">
+<p class="text-on-surface-variant/80 font-body text-lg leading-relaxed italic">
+                    "Softly close your eyes and feel the air fill your lungs from the bottom up."
+                </p>
+</div>
+</main>
+<!-- Session Controls & Stats (Bottom Anchor) -->
+<footer class="fixed bottom-0 left-0 w-full p-8 md:p-12 z-50">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+<!-- Cycle Counters -->
+<div class="flex gap-8 items-center">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-widest">Completed Cycles</span>
+<div class="flex gap-2 mt-2">
+<div class="w-8 h-2 rounded-full bg-primary"></div>
+<div class="w-8 h-2 rounded-full bg-primary"></div>
+<div class="w-8 h-2 rounded-full bg-surface-container-high"></div>
+<div class="w-8 h-2 rounded-full bg-surface-container-high"></div>
+<div class="w-8 h-2 rounded-full bg-surface-container-high"></div>
+</div>
+</div>
+<div class="w-px h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label text-[10px] font-bold uppercase tracking-widest">Time Elapsed</span>
+<span class="text-primary font-headline text-xl font-bold mt-1 tracking-tight">04:32</span>
+</div>
+</div>
+<!-- Main Action Cluster -->
+<div class="flex items-center gap-4">
+<button class="w-14 h-14 flex items-center justify-center rounded-full bg-surface-container-lowest text-primary hover:bg-surface-container transition-colors ease-sanctuary">
+<span class="material-symbols-outlined text-2xl" data-icon="refresh">refresh</span>
+</button>
+<!-- Play/Pause Gradient CTA -->
+<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-white rounded-full flex items-center gap-3 shadow-[0px_12px_32px_rgba(44,61,48,0.15)] hover:scale-105 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="pause" data-weight="fill">pause</span>
+<span class="font-label font-bold tracking-wide">Pause Session</span>
+</button>
+<button class="w-14 h-14 flex items-center justify-center rounded-full bg-surface-container-lowest text-primary hover:bg-surface-container transition-colors ease-sanctuary">
+<span class="material-symbols-outlined text-2xl" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+<!-- Right Side Detail (Glass Card) -->
+<div class="hidden lg:flex items-center gap-4 bg-surface-container-lowest/50 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/40">
+<img alt="Ambient background" class="w-10 h-10 rounded-full object-cover" data-alt="Macro photography of smooth river stones in shallow clear water with soft morning light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-k9ZsNMLlxCtiq50rrUdGZGVUBr1glBbN3Mob6rNg9hwauTzgBGrR2QmSqMv2O8NCvfqjEZnVwE2EF36KvLaJiz6F_lfMp5BrfPRnRoGl00Tm7z3TIH1W5sQRm9_Kes6iYs-nXIC7J6dnanAkfXqYaKY9W7pXBvydqAlt18zsulC87rpNh6GXddqQ2R241JWRlkj3Fl8rpOM2DStOM3trHNolZFTAx4hwedbwldoY-SldkxUMddvWJuLfDJ1Us7raRiYwzsnfWeft"/>
+<div class="flex flex-col text-left">
+<span class="text-on-surface-variant font-label text-[10px] font-bold uppercase">Background Audio</span>
+<span class="text-primary font-headline text-xs font-bold">Forest Stream Whispers</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Progress Track (Material Philosophy) -->
+<div class="fixed bottom-0 left-0 w-full h-1.5 bg-surface-container-high">
+<div class="h-full bg-primary w-1/3 transition-all duration-[4000ms] ease-linear"></div>
+</div>
+</div>
+<!-- Background Immersive Visuals (Strictly following the data-alt requirement) -->
+<div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden opacity-30">
+<img alt="Immersive meditation background" class="w-full h-full object-cover mix-blend-multiply blur-xl" data-alt="Soft focused abstract forest canopy with sunlight filtering through sage green leaves creating a peaceful bokeh effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9iPud1LWV6gUZ0Fs5k3c5reZm0VP96Vb8a5vYk4Y2tU97kGRIDn_WM_nIebcP3W80-n5ZaNmCA_k6oG0H46OFJYjHhnHV9N2vjd-UnDlJ8M0M9WC-yu1fYSheP9a6T4n5WpR9Mjl_KkOLAEUwQgf_HBwknpggZ2zlqvtRZX4IiTuh3yf9i0eD4IRzunoRMIUZ8sgP_GLXjXU3oGJ4Yu14WrW-XYcbulIHYeiKHZbhTsNvphcI17XxS43PZLbYh9hgUqsx8yhaaDIg"/>
+</div>
+</body></html>

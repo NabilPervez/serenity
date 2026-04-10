@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f6f3ed",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#526442",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#ebe8e2",
+                    "on-secondary-container": "#783220",
+                    "primary": "#526442",
+                    "tertiary-fixed-dim": "#b8ccba",
+                    "inverse-primary": "#b9cda4",
+                    "outline-variant": "#c5c8bc",
+                    "surface-container": "#f0eee8",
+                    "inverse-surface": "#31312d",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#314235",
+                    "on-primary-fixed-variant": "#3b4c2c",
+                    "primary-fixed-dim": "#b9cda4",
+                    "error": "#ba1a1a",
+                    "on-surface": "#1c1c18",
+                    "outline": "#75786e",
+                    "surface": "#fcf9f3",
+                    "surface-dim": "#dcdad4",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#ffdad2",
+                    "on-secondary-fixed": "#3c0700",
+                    "tertiary-fixed": "#d4e8d5",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-primary-fixed": "#111f05",
+                    "secondary-container": "#fe9c84",
+                    "primary-fixed": "#d5e9bf",
+                    "on-primary-container": "#324224",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "primary-container": "#9caf88",
+                    "on-secondary-fixed-variant": "#773120",
+                    "background": "#fcf9f3",
+                    "tertiary": "#516354",
+                    "on-tertiary-fixed-variant": "#394b3d",
+                    "on-background": "#1c1c18",
+                    "surface-bright": "#fcf9f3",
+                    "surface-variant": "#e5e2dc",
+                    "on-surface-variant": "#44483f",
+                    "secondary": "#954835",
+                    "tertiary-container": "#9bae9d",
+                    "inverse-on-surface": "#f3f0ea",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#0f1f14",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f3;
+            color: #1c1c18;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .breathing-canvas {
+            background: radial-gradient(circle at center, #f0eee8 0%, #fcf9f3 100%);
+        }
+        .editorial-header {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex min-h-screen">
+<!-- NavigationDrawer (Desktop Shell) -->
+<nav class="fixed left-0 top-0 h-full py-8 flex flex-col border-r border-[#c5c8bc]/20 bg-[#f6f3ed] dark:bg-[#1c1c18] h-screen w-64 rounded-r-[3rem] hidden md:flex">
+<div class="text-2xl font-black text-[#526442] tracking-tight mb-8 px-6">Serenity</div>
+<div class="flex flex-col flex-1">
+<a class="text-[#44483f] hover:bg-[#f0eee8] rounded-full mx-2 px-4 py-3 mb-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold">Home</span>
+</a>
+<a class="text-[#44483f] hover:bg-[#f0eee8] rounded-full mx-2 px-4 py-3 mb-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold">Timeline</span>
+</a>
+<a class="bg-gradient-to-r from-[#526442] to-[#9caf88] text-white rounded-full mx-2 px-4 py-3 mb-2 flex items-center gap-3 shadow-sm" href="#">
+<span class="material-symbols-outlined">air</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold">Breathe</span>
+</a>
+<a class="text-[#44483f] hover:bg-[#f0eee8] rounded-full mx-2 px-4 py-3 mb-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center min-h-screen px-6 md:ml-64 relative breathing-canvas">
+<!-- Header for Transactional Context (Back Action) -->
+<header class="absolute top-0 left-0 w-full p-6 flex items-center justify-between z-10">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-lowest hover:bg-surface-container-high transition-colors duration-300">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+<div class="editorial-header font-bold text-on-surface-variant tracking-tight uppercase text-xs">Box Breathing</div>
+<div class="w-12"></div>
+</header>
+<!-- Immersive Breathing UI Container -->
+<section class="max-w-md w-full flex flex-col items-center text-center space-y-16">
+<!-- Cycle Counter -->
+<div class="space-y-2">
+<p class="text-on-surface-variant/60 font-body text-sm tracking-widest uppercase">Cycle 3 of 10</p>
+<h1 class="editorial-header text-4xl font-bold text-on-surface tracking-tight">Center yourself</h1>
+</div>
+<!-- Breathing Visualizer: The "Breathing Pebble" -->
+<div class="relative flex items-center justify-center">
+<!-- Ambient Glow Layer -->
+<div class="absolute w-80 h-80 bg-primary-container/10 rounded-full blur-3xl opacity-50"></div>
+<!-- The Main Pulse Circle (Representative of a scale 0.95 to 1.15 in real UI) -->
+<div class="w-64 h-64 bg-white rounded-full flex items-center justify-center shadow-[0px_24px_48px_rgba(44,61,48,0.08)] z-0 relative group">
+<!-- Central Indicator -->
+<div class="w-48 h-48 rounded-full border-4 border-primary-container/20 flex flex-col items-center justify-center transition-all duration-1000">
+<span class="editorial-header text-3xl font-semibold text-primary">Inhale</span>
+<span class="font-body text-on-surface-variant/60 text-sm mt-1">4s</span>
+</div>
+</div>
+<!-- Text Indicators (Asymmetric Layout) -->
+<div class="absolute -top-12 -right-8 p-4 bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg shadow-sm border border-outline-variant/10">
+<p class="text-xs font-bold text-primary tracking-tighter uppercase mb-1">Coming next</p>
+<p class="text-sm font-medium text-on-surface">Hold (4s)</p>
+</div>
+</div>
+<!-- Descriptive Instructions (Editorial Style) -->
+<div class="max-w-xs mx-auto">
+<p class="font-body text-on-surface-variant leading-relaxed">
+                    Allow your chest to expand fully. Feel the cool air grounding your awareness in this moment.
+                </p>
+</div>
+<!-- Actions Bar -->
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full">
+<!-- Start/Pause Toggle (Primary Gradient) -->
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-primary to-primary-container text-white flex items-center justify-center gap-3 shadow-lg hover:scale-[0.98] transition-transform active:scale-95 duration-300">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">pause</span>
+<span class="editorial-header font-bold tracking-tight text-lg">Pause Session</span>
+</button>
+<!-- Stop (Secondary Ghost) -->
+<button class="w-full h-16 rounded-full border border-outline-variant/20 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-300 flex items-center justify-center">
+<span class="editorial-header font-semibold tracking-tight">End Session</span>
+</button>
+</div>
+</section>
+<!-- Progress Track (Bottom Anchor) -->
+<div class="absolute bottom-12 w-full max-w-xs px-6">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">Session Progress</span>
+<span class="text-[10px] font-bold text-on-surface-variant/50">3:42 / 10:00</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 35%;"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Shell Only) -->
+<!-- Suppressed due to focused transactional task (Session active) -->
+</body></html>
