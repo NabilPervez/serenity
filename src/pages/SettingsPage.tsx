@@ -189,6 +189,7 @@ export default function SettingsPage() {
           <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)' }}>settings</span>
           Settings
         </div>
+        {/* No cog here — this IS the settings page */}
       </header>
 
       <div className="page-content">
@@ -230,18 +231,7 @@ export default function SettingsPage() {
         <section className="animate-fade-up" style={{ animationDelay: '0.05s' }}>
           <h3 className="section-title" style={{ marginBottom: '0.75rem' }}>My Personal Toolkit</h3>
           <div className="settings-group">
-            <div className="settings-row" onClick={() => { setTempSkills(selectedSkillIds); setShowSkillPicker(true); }}>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                  <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.1rem' }}>self_improvement</span>
-                  <span style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem' }}>Coping Skills</span>
-                </div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>
-                  {COPING_SKILLS.filter((s) => selectedSkillIds.includes(s.id)).map((s) => s.name).join(', ')}
-                </p>
-              </div>
-              <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)', flexShrink: 0 }}>chevron_right</span>
-            </div>
+            {/* Affirmations first, then Coping Skills */}
             <div className="settings-row" onClick={() => { setTempAffs(selectedAffirmationIds); setShowAffPicker(true); }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
@@ -250,6 +240,18 @@ export default function SettingsPage() {
                 </div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>
                   {selectedAffirmationIds.length} affirmations selected
+                </p>
+              </div>
+              <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)', flexShrink: 0 }}>chevron_right</span>
+            </div>
+            <div className="settings-row" onClick={() => { setTempSkills(selectedSkillIds); setShowSkillPicker(true); }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                  <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.1rem' }}>self_improvement</span>
+                  <span style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem' }}>Coping Skills</span>
+                </div>
+                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>
+                  {COPING_SKILLS.filter((s) => selectedSkillIds.includes(s.id)).map((s) => s.name).join(', ')}
                 </p>
               </div>
               <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)', flexShrink: 0 }}>chevron_right</span>
@@ -275,14 +277,23 @@ export default function SettingsPage() {
                 <span className="toggle-slider" />
               </label>
             </div>
-            <div className="settings-row">
+            <div className="settings-row" style={{ cursor: 'default' }}>
               <div>
-                <div style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem', marginBottom: '0.25rem' }}>Waking Hours</div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>
-                  {formatHour(wakingHoursStart)} – {formatHour(wakingHoursEnd)}
-                </p>
+                <div style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem', marginBottom: '0.25rem' }}>Notification Schedule</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginTop: '0.25rem' }}>
+                  {[
+                    { icon: 'schedule', text: `Hourly check-ins · ${formatHour(wakingHoursStart)} – ${formatHour(wakingHoursEnd)}` },
+                    { icon: 'air', text: 'Box Breathing at 9 AM & 1 PM' },
+                    { icon: 'air', text: 'Box Breathing at 9 PM' },
+                    { icon: 'bedtime', text: 'Wind-down reminder at 9 PM' },
+                  ].map((n) => (
+                    <div key={n.text} style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '0.875rem', color: 'var(--color-primary)' }}>{n.icon}</span>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>{n.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)' }}>schedule</span>
             </div>
           </div>
         </section>

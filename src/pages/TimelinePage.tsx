@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { addTimelineEntry, getTimelineEntries, type TimelineEntry } from '../data/db';
 import { MOODS } from '../data/constants';
 import { Toast, useToast } from '../components/Toast';
+import TopBar from '../components/TopBar';
 
 function formatTime(timestamp: number): string {
   return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -80,16 +81,15 @@ export default function TimelinePage() {
     <>
       <Toast message={toast.message} show={toast.show} />
 
-      {/* Top Bar */}
-      <header className="top-bar">
-        <div className="top-bar-title">
-          <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)' }}>auto_stories</span>
-          Your Journey
-        </div>
-        <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
-          {entries.length} check-in{entries.length !== 1 ? 's' : ''}
-        </span>
-      </header>
+      <TopBar
+        title="Your Journey"
+        icon="auto_stories"
+        right={
+          <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
+            {entries.length} check-in{entries.length !== 1 ? 's' : ''}
+          </span>
+        }
+      />
 
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '1.5rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}

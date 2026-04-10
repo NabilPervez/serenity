@@ -6,6 +6,7 @@ import OnboardingPage from './pages/OnboardingPage';
 import HomePage from './pages/HomePage';
 import TimelinePage from './pages/TimelinePage';
 import BreathePage from './pages/BreathePage';
+import BedtimePage from './pages/BedtimePage';
 import SettingsPage from './pages/SettingsPage';
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/breathe" element={<BreathePage />} />
+              <Route path="/bedtime" element={<BedtimePage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

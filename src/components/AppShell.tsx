@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface NavItem {
   to: string;
@@ -7,16 +7,15 @@ interface NavItem {
   label: string;
 }
 
+// Settings removed from nav — it's now a cog on each page's top bar
 const NAV_ITEMS: NavItem[] = [
   { to: '/', icon: 'fact_check', label: 'Home' },
   { to: '/timeline', icon: 'auto_stories', label: 'Timeline' },
   { to: '/breathe', icon: 'air', label: 'Breathe' },
-  { to: '/settings', icon: 'settings', label: 'Settings' },
+  { to: '/bedtime', icon: 'bedtime', label: 'Bedtime' },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
-  const navigate = useNavigate();
-
   return (
     <div className="app-shell">
       {/* Desktop Sidebar */}
@@ -45,17 +44,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* Floating Breathe Button */}
-      <button
-        className="fab"
-        onClick={() => navigate('/breathe')}
-        title="Start breathing exercise"
-        aria-label="Start breathing exercise"
-      >
-        <span className="material-symbols-outlined" style={{ fontSize: '1.6rem' }}>air</span>
-      </button>
-
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation — no FAB, no Settings */}
       <nav className="bottom-nav" aria-label="Main navigation">
         {NAV_ITEMS.map((item) => (
           <NavLink
