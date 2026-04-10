@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import journalPrompts from '../data/journalPrompts.json';
 
 export default function JournalPage() {
-  const navigate = useNavigate();
   const { saveJournalEntry, journalEntries } = useAppStore();
   
   // State to hold the responses for each prompt id
