@@ -1,152 +1,36 @@
 // ======================================================
 // DATA CONSTANTS
-// 26 Coping Skills + 101 Affirmations
+// Source data loaded from JSON files:
+//   src/data/copingSkills.json  — 26 coping skills
+//   src/data/affirmations.json  — 101 positive affirmations
 // ======================================================
+
+import copingSkillsData from './copingSkills.json';
+import affirmationsData from './affirmations.json';
+
+// ── Types ──────────────────────────────────────────────
 
 export interface CopingSkill {
   id: string;
   name: string;
-  description: string;
-  icon: string;
+  description: string;   // short display text
+  fullText: string;      // original verbatim text from source
+  icon: string;          // Material Symbols icon name
+  category: string;      // physical | creative | relaxation | mental | spiritual | social
 }
 
 export interface Affirmation {
   id: string;
-  text: string;
+  text: string;          // verbatim from source
 }
 
-export const COPING_SKILLS: CopingSkill[] = [
-  { id: 'box-breathing', name: 'Box Breathing', description: '4-count rhythmic reset', icon: 'air' },
-  { id: 'grounding-54321', name: '5-4-3-2-1 Grounding', description: 'Engage your five senses', icon: 'pan_tool' },
-  { id: 'body-scan', name: 'Body Scanning', description: 'Head-to-toe awareness', icon: 'accessibility_new' },
-  { id: 'journaling', name: 'Journaling', description: 'Release thoughts to paper', icon: 'edit_note' },
-  { id: 'pmr', name: 'Muscle Relaxation', description: 'Tense and release stress', icon: 'fitness_center' },
-  { id: 'reframing', name: 'Cognitive Reframing', description: 'Shift perspective on stress', icon: 'psychology' },
-  { id: 'visualization', name: 'Visualization', description: 'Visit your mental sanctuary', icon: 'landscape' },
-  { id: 'rain', name: 'RAIN Method', description: 'Recognize and allow feelings', icon: 'water_drop' },
-  { id: 'cold-water', name: 'Cold Water Splash', description: 'A quick nervous system reset', icon: 'water' },
-  { id: 'soft-music', name: 'Ambient Music', description: '10 min of nature sounds', icon: 'music_note' },
-  { id: 'walk', name: 'Mindful Walk', description: '15-min outdoor grounding', icon: 'directions_walk' },
-  { id: 'stretch', name: 'Gentle Stretching', description: 'Release held tension', icon: 'self_improvement' },
-  { id: 'tea', name: 'Warm Tea Ritual', description: 'Slow sensory calming', icon: 'local_cafe' },
-  { id: 'gratitude', name: 'Gratitude Listing', description: 'Write 3 things you appreciate', icon: 'favorite' },
-  { id: 'square-breath', name: 'Square Breathing', description: 'Calm the vagus nerve', icon: 'crop_square' },
-  { id: '478-breath', name: '4-7-8 Breathing', description: 'Deep relaxation technique', icon: 'spa' },
-  { id: 'garden', name: 'Nature Connection', description: 'Touch grass, literally', icon: 'eco' },
-  { id: 'affirmations', name: 'Verbal Affirmations', description: 'Say them out loud', icon: 'record_voice_over' },
-  { id: 'progressive-imagery', name: 'Progressive Imagery', description: 'Peaceful scene meditation', icon: 'wb_twilight' },
-  { id: 'safety-scan', name: 'Safety Scanning', description: 'Name 3 things that are safe', icon: 'shield' },
-  { id: 'eft-tapping', name: 'EFT Tapping', description: 'Acupressure for anxiety', icon: 'touch_app' },
-  { id: 'art-therapy', name: 'Expressive Drawing', description: 'Doodle without judgment', icon: 'draw' },
-  { id: 'reading', name: 'Calm Reading', description: '15 min of fiction or poetry', icon: 'menu_book' },
-  { id: 'cold-shower', name: 'Cold Shower', description: 'Sympathetic nervous system reset', icon: 'shower' },
-  { id: 'prayer-meditation', name: 'Mindful Meditation', description: 'Sit in silent presence', icon: 'emoji_nature' },
-  { id: 'social-support', name: 'Reach Out', description: 'Text someone you trust', icon: 'chat_bubble' },
-];
+// ── Exported data ─────────────────────────────────────
 
-export const AFFIRMATIONS: Affirmation[] = [
-  { id: 'a1', text: 'I am safe and grounded in this moment.' },
-  { id: 'a2', text: 'I am breathing, and that is enough.' },
-  { id: 'a3', text: 'My anxiety does not define my strength.' },
-  { id: 'a4', text: 'I trust my journey and my pace.' },
-  { id: 'a5', text: 'I give myself permission to rest.' },
-  { id: 'a6', text: 'I release what I cannot control.' },
-  { id: 'a7', text: 'Today, I choose peace over perfection.' },
-  { id: 'a8', text: 'I am worthy of calm and healing.' },
-  { id: 'a9', text: 'This feeling will pass. I have survived before.' },
-  { id: 'a10', text: 'I am more resilient than my fears.' },
-  { id: 'a11', text: 'I deserve gentleness—especially from myself.' },
-  { id: 'a12', text: 'My nervous system is learning to find safety.' },
-  { id: 'a13', text: 'I am not my thoughts. I am the observer.' },
-  { id: 'a14', text: 'Slowing down is not failing. It is wisdom.' },
-  { id: 'a15', text: 'I welcome this breath as a new beginning.' },
-  { id: 'a16', text: 'I have everything I need within me.' },
-  { id: 'a17', text: 'I am allowed to take up space and time.' },
-  { id: 'a18', text: 'My body is doing its best to protect me.' },
-  { id: 'a19', text: 'I choose to respond, not react.' },
-  { id: 'a20', text: 'Uncertainty does not mean danger.' },
-  { id: 'a21', text: 'I release tension with every exhale.' },
-  { id: 'a22', text: 'I am grounded. I am present. I am whole.' },
-  { id: 'a23', text: 'Healing is not linear, and that is okay.' },
-  { id: 'a24', text: 'I am capable of handling this moment.' },
-  { id: 'a25', text: 'My feelings are valid, not permanent.' },
-  { id: 'a26', text: 'I radiate calm, even in the storm.' },
-  { id: 'a27', text: 'I deserve rest without guilt.' },
-  { id: 'a28', text: 'I am becoming stronger every single day.' },
-  { id: 'a29', text: 'Asking for help is an act of courage.' },
-  { id: 'a30', text: 'I trust that everything is unfolding as it should.' },
-  { id: 'a31', text: 'I am loved and supported, even in solitude.' },
-  { id: 'a32', text: 'My mind is clearing like a peaceful lake.' },
-  { id: 'a33', text: 'I choose thoughts that serve my highest good.' },
-  { id: 'a34', text: 'I release the past and embrace this new moment.' },
-  { id: 'a35', text: 'I am patient with myself during this process.' },
-  { id: 'a36', text: 'I face my fears with courage and self-compassion.' },
-  { id: 'a37', text: 'I am at home in my own body.' },
-  { id: 'a38', text: 'Today, I let go of what no longer serves me.' },
-  { id: 'a39', text: 'I speak to myself with kindness.' },
-  { id: 'a40', text: 'My heart rate is slowing. I am safe.' },
-  { id: 'a41', text: 'I have navigated hard moments before, and I will again.' },
-  { id: 'a42', text: 'I invite stillness into my life, one breath at a time.' },
-  { id: 'a43', text: 'I replace worry with curiosity.' },
-  { id: 'a44', text: 'I celebrate each small step forward.' },
-  { id: 'a45', text: 'I am enough, exactly as I am right now.' },
-  { id: 'a46', text: 'My sensitivity is a superpower, not a weakness.' },
-  { id: 'a47', text: 'I build peace into every part of my day.' },
-  { id: 'a48', text: 'I notice my anxiety with curiosity, not fear.' },
-  { id: 'a49', text: 'I am the author of my own story.' },
-  { id: 'a50', text: 'This too shall pass, as all things do.' },
-  { id: 'a51', text: 'I release tension from my shoulders, jaw, and hands.' },
-  { id: 'a52', text: 'I am a work in progress—and that is beautiful.' },
-  { id: 'a53', text: 'I trust the timing of my healing.' },
-  { id: 'a54', text: 'Even on hard days, I am doing my best.' },
-  { id: 'a55', text: 'I have a calm center no storm can reach.' },
-  { id: 'a56', text: 'I give myself the gift of this present moment.' },
-  { id: 'a57', text: 'I am free from the weight of perfectionism.' },
-  { id: 'a58', text: 'I recognize anxiety as energy I can redirect.' },
-  { id: 'a59', text: 'My peace of mind is my highest priority.' },
-  { id: 'a60', text: 'I ground myself in the five things I can sense right now.' },
-  { id: 'a61', text: 'I honor my need for rest without apology.' },
-  { id: 'a62', text: 'Today, I will move at a pace that feels good to me.' },
-  { id: 'a63', text: 'I am doing the inner work, and it matters.' },
-  { id: 'a64', text: 'Setbacks are setups for greater strength.' },
-  { id: 'a65', text: 'I release the need to understand everything at once.' },
-  { id: 'a66', text: 'My breath is an anchor that keeps me present.' },
-  { id: 'a67', text: 'I can feel anxious and still choose wisely.' },
-  { id: 'a68', text: 'I am open to receiving support graciously.' },
-  { id: 'a69', text: 'The universe conspires in my favor.' },
-  { id: 'a70', text: 'I find joy in small, simple things today.' },
-  { id: 'a71', text: 'This challenge is making me wiser and more compassionate.' },
-  { id: 'a72', text: 'I release catastrophic thinking and embrace reality.' },
-  { id: 'a73', text: 'I am rooted like a tree—flexible but strong.' },
-  { id: 'a74', text: 'I give my mind permission to slow down.' },
-  { id: 'a75', text: 'Each exhale releases what I no longer need.' },
-  { id: 'a76', text: 'I am learning to befriend my nervous system.' },
-  { id: 'a77', text: 'I don\'t have to have it all figured out today.' },
-  { id: 'a78', text: 'My emotions are messengers, not masters.' },
-  { id: 'a79', text: 'I find safety in my breath whenever I need it.' },
-  { id: 'a80', text: 'I release comparison and honor my own path.' },
-  { id: 'a81', text: 'I am not alone. Many people understand this feeling.' },
-  { id: 'a82', text: 'I choose present peace over future worry.' },
-  { id: 'a83', text: 'I embrace imperfection as a mark of humanity.' },
-  { id: 'a84', text: 'My body knows how to heal and restore itself.' },
-  { id: 'a85', text: 'I am held by something greater than my anxiety.' },
-  { id: 'a86', text: 'I am worthy of good things, even in difficult moments.' },
-  { id: 'a87', text: 'I greet my emotions with openness and ease.' },
-  { id: 'a88', text: 'Every breath I take nourishes and restores me.' },
-  { id: 'a89', text: 'I release timelines and trust the process.' },
-  { id: 'a90', text: 'I respond to life\'s challenges with grace.' },
-  { id: 'a91', text: 'I celebrate my progress, no matter how small.' },
-  { id: 'a92', text: 'I am exactly where I need to be right now.' },
-  { id: 'a93', text: 'I create space between my thoughts and my reactions.' },
-  { id: 'a94', text: 'I let go of what I cannot change.' },
-  { id: 'a95', text: 'I am getting better at recognizing and releasing stress.' },
-  { id: 'a96', text: 'I anchor myself in gratitude for the present.' },
-  { id: 'a97', text: 'I trust that I can handle whatever comes.' },
-  { id: 'a98', text: 'I soften my mind and body with each breath.' },
-  { id: 'a99', text: 'I am made of resilience, love, and quiet strength.' },
-  { id: 'a100', text: 'I am on the right path, even when I can\'t see it.' },
-  { id: 'a101', text: 'I carry serenity with me wherever I go.' },
-];
+export const COPING_SKILLS: CopingSkill[] = copingSkillsData as CopingSkill[];
+
+export const AFFIRMATIONS: Affirmation[] = affirmationsData as Affirmation[];
+
+// ── Mood tags ─────────────────────────────────────────
 
 export const MOODS = [
   { label: 'Calm', icon: '😌', color: 'primary' },

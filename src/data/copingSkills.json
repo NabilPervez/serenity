@@ -1,0 +1,210 @@
+[
+  {
+    "id": "exercise",
+    "name": "Exercise",
+    "icon": "directions_run",
+    "description": "Walking, swimming, aerobics, yoga, dancing — movement reduces anxiety.",
+    "category": "physical",
+    "fullText": "Exercise of many kinds helps to reduce anxiety: Walking, swimming, aerobics, jazzercise, jogging, calisthenics, dancing, many of the oriental exercises such as yoga, Tae Kwon Do, etc., gardening, etc."
+  },
+  {
+    "id": "sports",
+    "name": "Non-competitive Sports",
+    "icon": "sports_soccer",
+    "description": "Fun, non-violent sports that bring joy without stress.",
+    "category": "physical",
+    "fullText": "Sports of various kinds and especially sports that are non-violent. Sports that are fun and not highly competitive are great reducers of anxiety."
+  },
+  {
+    "id": "music_play",
+    "name": "Play an Instrument",
+    "icon": "piano",
+    "description": "Express yourself through piano, guitar, or any instrument.",
+    "category": "creative",
+    "fullText": "Playing musical instruments such as piano, organ, guitar, etc."
+  },
+  {
+    "id": "music_listen",
+    "name": "Listen to Soothing Music",
+    "icon": "headphones",
+    "description": "Let calming, soothing music wash your worries away.",
+    "category": "relaxation",
+    "fullText": "Listening to music that tends to relax and soothe."
+  },
+  {
+    "id": "spirituality",
+    "name": "Attune to Spirituality",
+    "icon": "auto_awesome",
+    "description": "Connect with your spiritual self through books, nature, art, or poetry.",
+    "category": "spiritual",
+    "fullText": "Attune yourself to spirituality: What gets you in touch with your spirituality? Do whatever it takes to put you in touch with your spirituality. For some people this could be reading inspirational books, religious books, nature books, poetry, nature, art or whatever."
+  },
+  {
+    "id": "prayer",
+    "name": "Prayer or Religious Service",
+    "icon": "church",
+    "description": "Pray alone or attend a service to find peace and community.",
+    "category": "spiritual",
+    "fullText": "Pray or attend a religious service."
+  },
+  {
+    "id": "muscle_relax",
+    "name": "Progressive Muscle Relaxation",
+    "icon": "self_improvement",
+    "description": "Start at your head and progressively relax down to your toes.",
+    "category": "relaxation",
+    "fullText": "Relaxation of muscles — start at the top of your head and relax the top of your skull and progressively relax your way to your toes."
+  },
+  {
+    "id": "reading",
+    "name": "Reading",
+    "icon": "menu_book",
+    "description": "Lose yourself in a book — fiction, non-fiction, anything that captivates.",
+    "category": "mental",
+    "fullText": "Read."
+  },
+  {
+    "id": "creative",
+    "name": "Creative Activity",
+    "icon": "palette",
+    "description": "Do something creative that relaxes and fulfills you.",
+    "category": "creative",
+    "fullText": "Do something creative that relaxes you."
+  },
+  {
+    "id": "hobby",
+    "name": "Pursue a Hobby",
+    "icon": "construction",
+    "description": "Begin a new hobby or reactivate one you've set aside.",
+    "category": "mental",
+    "fullText": "Begin a hobby or reactivate an old hobby."
+  },
+  {
+    "id": "gardening",
+    "name": "Gardening",
+    "icon": "yard",
+    "description": "Tend to plants, soil, and growth — a grounding anxiety reducer.",
+    "category": "physical",
+    "fullText": "Gardening for some is a great anxiety reducer."
+  },
+  {
+    "id": "poetry",
+    "name": "Write Poetry",
+    "icon": "edit_note",
+    "description": "Put your feelings into verse — a powerful emotional outlet.",
+    "category": "creative",
+    "fullText": "Write poems."
+  },
+  {
+    "id": "journal",
+    "name": "Keep a Journal",
+    "icon": "book",
+    "description": "Write down your thoughts and emotions to process them freely.",
+    "category": "mental",
+    "fullText": "Keep a journal."
+  },
+  {
+    "id": "outdoors",
+    "name": "Outdoor Activities",
+    "icon": "hiking",
+    "description": "Hiking, fishing, rock climbing, walking through woods or meadows.",
+    "category": "physical",
+    "fullText": "Hiking, fishing, hunting, field trips, rock climbing, walking through the woods or meadow are all anxiety reducers for some people."
+  },
+  {
+    "id": "intimacy",
+    "name": "Intimacy & Connection",
+    "icon": "favorite",
+    "description": "Physical and emotional closeness with a loving partner.",
+    "category": "social",
+    "fullText": "Make love."
+  },
+  {
+    "id": "imagery",
+    "name": "Guided Imagery",
+    "icon": "landscape",
+    "description": "Visualize your most peaceful place whenever anxiety begins to rise.",
+    "category": "relaxation",
+    "fullText": "Imaging — think of the most pleasant and beautiful place you have been — go there in your mind whenever beginning to feel anxious."
+  },
+  {
+    "id": "play",
+    "name": "Playful Activities",
+    "icon": "toys",
+    "description": "Fly a kite, toss a frisbee, or play a board game — lighten up.",
+    "category": "social",
+    "fullText": "Fly a kite, play with a Frisbee, play a board game."
+  },
+  {
+    "id": "spiritual_place",
+    "name": "Visit a Spiritual Place",
+    "icon": "location_on",
+    "description": "Go somewhere that reliably touches your sense of spirit and wonder.",
+    "category": "spiritual",
+    "fullText": "Go to a place that touches your spirituality."
+  },
+  {
+    "id": "humor",
+    "name": "Read or Watch Humor",
+    "icon": "sentiment_very_satisfied",
+    "description": "Laughter is medicine — seek out comedy, funny books, or shows.",
+    "category": "mental",
+    "fullText": "Read humor."
+  },
+  {
+    "id": "help_others",
+    "name": "Help Others",
+    "icon": "volunteer_activism",
+    "description": "Be genuinely helpful without fostering dependence — teach them to fish.",
+    "category": "social",
+    "fullText": "Be helpful but do not make someone dependent — teach them to fish for themselves."
+  },
+  {
+    "id": "pets",
+    "name": "Play with a Pet",
+    "icon": "pets",
+    "description": "Cuddle, play, or simply watch animals — instantly calming.",
+    "category": "social",
+    "fullText": "Play with a pet — watch fish in an aquarium."
+  },
+  {
+    "id": "art",
+    "name": "Artistic Activity",
+    "icon": "brush",
+    "description": "Clay modeling, painting, sewing, woodcarving, flower arranging, and more.",
+    "category": "creative",
+    "fullText": "Engage in some form of artistic activity — clay modeling, painting, sewing, wood carving, restoring antiques, flower arranging, needle point, soap sculpturing, etc."
+  },
+  {
+    "id": "box_breathing",
+    "name": "Box Breathing & Rest",
+    "icon": "air",
+    "description": "Deep breathing exercises followed by a 5–20 minute complete rest.",
+    "category": "relaxation",
+    "fullText": "Deep breathing exercises. Take a nap. Completely relax for 5–20 minutes."
+  },
+  {
+    "id": "water",
+    "name": "Sit by Water",
+    "icon": "water",
+    "description": "The ocean, lake, pond, stream, or fountain — water soothes the soul.",
+    "category": "physical",
+    "fullText": "Sit by the ocean, lake, pond, stream or fountain."
+  },
+  {
+    "id": "park",
+    "name": "Visit a Park",
+    "icon": "park",
+    "description": "Step outside into nature — green space measurably reduces anxiety.",
+    "category": "physical",
+    "fullText": "Go to a park."
+  },
+  {
+    "id": "fun",
+    "name": "Have Fun & Play",
+    "icon": "celebration",
+    "description": "Have fun, make fun, play — repeat as many times as needed.",
+    "category": "social",
+    "fullText": "Have fun, make fun, play, have fun, make fun, play, have fun, make fun, play."
+  }
+]
