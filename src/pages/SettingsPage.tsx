@@ -27,11 +27,51 @@ export default function SettingsPage() {
   const [tempAffs, setTempAffs] = useState<string[]>(selectedAffirmationIds);
   const { setSelectedSkills, setSelectedAffirmations } = useAppStore();
 
+  const handleImportData = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      if (!confirm('This will overwrite your existing data. Are you sure you want to proceed?')) {
+        return;
+      }
+
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (data.timeline && Array.isArray(data.timeline)) {
+          await db.timeline.clear();
+          await db.timeline.bulkAdd(data.timeline);
+        }
+
+        if (data.preferences) {
+          useAppStore.setState(data.preferences);
+          setTempSkills(data.preferences.selectedSkillIds || []);
+          setTempAffs(data.preferences.selectedAffirmationIds || []);
+        }
+
+        showToast('Data imported successfully ✓');
+      } catch (error) {
+        showToast('Import failed. Invalid file format.');
+        console.error('Import error:', error);
+      }
+    };
+    input.click();
+  };
+
   const handleExportData = async () => {
     try {
       const entries = await getTimelineEntries(1000);
-      const prefs = { selectedSkillIds, selectedAffirmationIds, currentStreak };
-      const data = { preferences: prefs, timeline: entries, exportedAt: new Date().toISOString() };
+      const storeState = useAppStore.getState();
+      const data = {
+        preferences: storeState,
+        timeline: entries,
+        exportedAt: new Date().toISOString()
+      };
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -309,7 +349,17 @@ export default function SettingsPage() {
                   <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.1rem' }}>download</span>
                   <span style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem' }}>Export My Data</span>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>Download all timeline entries as JSON</p>
+                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>Download your data and settings as JSON</p>
+              </div>
+              <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)', flexShrink: 0 }}>chevron_right</span>
+            </div>
+            <div className="settings-row" onClick={handleImportData}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                  <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.1rem' }}>upload</span>
+                  <span style={{ fontWeight: 600, color: 'var(--color-on-surface)', fontSize: '0.95rem' }}>Import My Data</span>
+                </div>
+                <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)' }}>Restore your data and settings from JSON</p>
               </div>
               <span className="material-symbols-outlined" style={{ color: 'var(--color-outline)', flexShrink: 0 }}>chevron_right</span>
             </div>
