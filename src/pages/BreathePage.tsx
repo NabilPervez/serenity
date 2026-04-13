@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { addTimelineEntry, getTimelineEntries, type TimelineEntry } from '../data/db';
 import TopBar from '../components/TopBar';
 
 // ── Phase definitions ──────────────────────────────────────────
@@ -38,6 +39,21 @@ const PHASES = [
 const TOTAL_CYCLES = 10;
 
 // ── Component ──────────────────────────────────────────────────
+function formatTime(timestamp: number): string {
+  return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function formatDate(timestamp: number): string {
+  const d = new Date(timestamp);
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  if (d.toDateString() === today.toDateString()) return 'Today';
+  if (d.toDateString() === yesterday.toDateString()) return 'Yesterday';
+  return d.toLocaleDateString([], { month: 'short', day: 'numeric' });
+}
+
 export default function BreathePage() {
   const navigate = useNavigate();
 
@@ -66,6 +82,15 @@ export default function BreathePage() {
     countdown: PHASES[0].seconds,
   });
 
+  const [entries, setEntries] = useState<TimelineEntry[]>([]);
+
+  const loadEntries = () => {
+    getTimelineEntries().then((allEntries) => {
+      const breatheEntries = allEntries.filter(e => e.notes === 'Completed a box breathing session');
+      setEntries(breatheEntries);
+    });
+  };
+
   const flush = () => {
     const s = sessionRef.current;
     setDisplay((prev) => ({ ...prev, phaseIdx: s.phaseIdx, cycle: s.cycle, countdown: s.countdown }));
@@ -89,6 +114,14 @@ export default function BreathePage() {
         if (s.cycle >= TOTAL_CYCLES) {
           s.running = false;
           stopInterval();
+          addTimelineEntry({
+            timestamp: Date.now(),
+            mood: 'Calm',
+            moodIcon: '😌',
+            anxietyLevel: 1,
+            notes: 'Completed a box breathing session',
+            date: new Date().toISOString().split('T')[0],
+          }).then(loadEntries);
           setDisplay((prev) => ({ ...prev, status: 'complete' }));
           return;
         }
@@ -128,6 +161,7 @@ export default function BreathePage() {
   };
 
   useEffect(() => stopInterval, []); // cleanup on unmount
+  useEffect(() => { loadEntries() }, []);
 
   // ── Derived display values ─────────────────────────────────────
   const { status, phaseIdx, cycle, countdown } = display;
@@ -172,7 +206,27 @@ export default function BreathePage() {
 
   return (
     <>
-      <TopBar title="Box Breathing" icon="air" />
+      <TopBar
+        title="Box Breathing"
+        icon="air"
+        right={
+          <Link
+            to="/breathe-analytics"
+            aria-label="Analytics"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: 'var(--color-primary)', textDecoration: 'none',
+              background: 'var(--color-surface-container-high)',
+              borderRadius: '50%', width: '32px', height: '32px',
+              transition: 'background 0.2s'
+            }}
+            onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.background = 'var(--color-primary-container)')}
+            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.background = 'var(--color-surface-container-high)')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>insights</span>
+          </Link>
+        }
+      />
 
       <div style={{
         background: 'radial-gradient(circle at 50% 40%, rgba(156, 175, 136, 0.08) 0%, var(--color-surface) 70%)',
@@ -182,6 +236,7 @@ export default function BreathePage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '2rem',
+        overflowY: 'auto',
       }}>
         <section style={{
           maxWidth: 400,
@@ -361,6 +416,50 @@ export default function BreathePage() {
               </>
             )}
           </div>
+
+
+          {/* ── Timeline History ── */}
+          {entries.length > 0 && (
+            <div style={{ width: '100%', marginTop: '3rem', textAlign: 'left' }}>
+              <h3 style={{ fontFamily: 'var(--font-headline)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-on-surface)' }}>
+                Your Journey
+              </h3>
+              <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+                <div className="timeline-line" />
+                {entries.map((entry, i) => {
+                  const color = entry.anxietyLevel <= 3 ? 'var(--color-primary)' : entry.anxietyLevel <= 6 ? 'var(--color-tertiary)' : 'var(--color-secondary)';
+                  return (
+                    <div key={entry.id} className="timeline-entry" style={{ animationDelay: `${i * 0.05}s` }}>
+                      <div className="timeline-dot" style={{ background: color }} />
+                      <div style={{
+                        background: 'var(--color-surface-container-lowest)',
+                        borderRadius: 'var(--radius-md)',
+                        padding: '1rem',
+                        boxShadow: 'var(--shadow-card)',
+                        marginBottom: '1rem'
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                          <div style={{ fontSize: '1.2rem' }}>{entry.moodIcon}</div>
+                          <div>
+                            <h4 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 700 }}>{entry.mood}</h4>
+                            <p style={{ margin: 0, fontSize: '0.7rem', color: 'var(--color-outline)' }}>
+                              {formatDate(entry.timestamp)}, {formatTime(entry.timestamp)}
+                            </p>
+                          </div>
+                        </div>
+                        {entry.notes && (
+                          <p style={{ fontSize: '0.85rem', color: 'var(--color-on-surface-variant)', fontStyle: 'italic', margin: 0 }}>
+                            "{entry.notes}"
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
 
         </section>
       </div>
