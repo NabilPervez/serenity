@@ -42,6 +42,10 @@ export async function getTimelineEntries(limit = 50): Promise<TimelineEntry[]> {
   return await db.timeline.orderBy('timestamp').reverse().limit(limit).toArray();
 }
 
+export async function getAllTimelineEntries(): Promise<TimelineEntry[]> {
+  return await db.timeline.orderBy('timestamp').reverse().toArray();
+}
+
 export async function getTodayChecklist(date: string): Promise<ChecklistState | undefined> {
   return await db.checklist.where('date').equals(date).first();
 }
