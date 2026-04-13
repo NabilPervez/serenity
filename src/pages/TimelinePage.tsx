@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { addTimelineEntry, getTimelineEntries, type TimelineEntry } from '../data/db';
 import { MOODS } from '../data/constants';
 import { Toast } from '../components/Toast';
@@ -86,9 +87,31 @@ export default function TimelinePage() {
         title="Your Journey"
         icon="auto_stories"
         right={
-          <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
-            {entries.length} check-in{entries.length !== 1 ? 's' : ''}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
+              {entries.length} check-in{entries.length !== 1 ? 's' : ''}
+            </span>
+            <Link
+              to="/analytics"
+              aria-label="Analytics"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-primary)',
+                textDecoration: 'none',
+                background: 'var(--color-surface-container-high)',
+                borderRadius: '50%',
+                width: '32px',
+                height: '32px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--color-primary-container)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--color-surface-container-high)')}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>insights</span>
+            </Link>
+          </div>
         }
       />
 
