@@ -151,6 +151,50 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
+
+            {/* Widget 5: Anxious Mood Insights */}
+            {(() => {
+              const anxiousEntries = entries.filter(e => e.mood === 'Anxious');
+              if (anxiousEntries.length === 0) return null;
+
+              const totalAnxious = anxiousEntries.length;
+              const avgAnxiousLevel = (anxiousEntries.reduce((sum, e) => sum + e.anxietyLevel, 0) / totalAnxious).toFixed(1);
+
+              const timeOfDayCounts = { Morning: 0, Afternoon: 0, Evening: 0, Night: 0 };
+              anxiousEntries.forEach(entry => {
+                const hour = new Date(entry.timestamp).getHours();
+                if (hour >= 5 && hour < 12) timeOfDayCounts.Morning++;
+                else if (hour >= 12 && hour < 17) timeOfDayCounts.Afternoon++;
+                else if (hour >= 17 && hour < 21) timeOfDayCounts.Evening++;
+                else timeOfDayCounts.Night++;
+              });
+
+              const mostCommonTime = Object.entries(timeOfDayCounts).sort((a, b) => b[1] - a[1])[0];
+
+              return (
+                <section className="card" style={{ background: 'var(--color-secondary-container)' }}>
+                  <div className="section-header" style={{ marginBottom: '1.5rem' }}>
+                    <span className="material-symbols-outlined" style={{ color: 'var(--color-on-secondary-container)' }}>warning</span>
+                    <h2 className="section-title" style={{ color: 'var(--color-on-secondary-container)' }}>Anxiety Deep Dive</h2>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '1rem', color: 'var(--color-on-secondary-container)' }}>
+                    <div style={{ textAlign: 'center' }}>
+                      <p style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.8, marginBottom: '0.5rem' }}>Total Logs</p>
+                      <p style={{ fontFamily: 'var(--font-headline)', fontSize: '1.5rem', fontWeight: 700 }}>{totalAnxious}</p>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                      <p style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.8, marginBottom: '0.5rem' }}>Avg Level</p>
+                      <p style={{ fontFamily: 'var(--font-headline)', fontSize: '1.5rem', fontWeight: 700 }}>{avgAnxiousLevel}</p>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                      <p style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.8, marginBottom: '0.5rem' }}>Most Frequent</p>
+                      <p style={{ fontFamily: 'var(--font-headline)', fontSize: '1.5rem', fontWeight: 700 }}>{mostCommonTime[0]}</p>
+                    </div>
+                  </div>
+                </section>
+              );
+            })()}
+
             {/* Widget 1: Most Common Emotions */}
             <section className="card">
               <div className="section-header" style={{ marginBottom: '1.5rem' }}>

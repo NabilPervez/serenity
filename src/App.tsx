@@ -10,6 +10,8 @@ import BedtimePage from './pages/BedtimePage';
 import SettingsPage from './pages/SettingsPage';
 import JournalPage from './pages/JournalPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import JournalAnalyticsPage from './pages/JournalAnalyticsPage';
+import BreatheAnalyticsPage from './pages/BreatheAnalyticsPage';
 
 export default function App() {
   const { onboardingComplete, updateStreak } = useAppStore();
@@ -36,8 +38,10 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/journal" element={<JournalPage />} />
+              <Route path="/journal-analytics" element={<JournalAnalyticsPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/analytics" element={<AnalyticsPage />} />
+              <Route path="/breathe-analytics" element={<BreatheAnalyticsPage />} />
               <Route path="/breathe" element={<BreathePage />} />
               <Route path="/bedtime" element={<BedtimePage />} />
               <Route path="/settings" element={<SettingsPage />} />

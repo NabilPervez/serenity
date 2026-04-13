@@ -6,6 +6,7 @@ interface JournalEntry {
   date: string;      // YYYY-MM-DD (local timezone)
   timestamp: number; // epoch ms — allows ordering multiple same-day entries
   responses: Record<string, string>; // promptId -> response text
+  mood?: string;
 }
 
 interface UserPreferences {

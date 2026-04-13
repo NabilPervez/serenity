@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import TopBar from '../components/TopBar';
 import { useAppStore } from '../store/useAppStore';
 import journalPrompts from '../data/journalPrompts.json';
+import { MOODS } from '../data/constants';
+import { Link } from 'react-router-dom';
 
 /** Formats date + optional time into a human-friendly label. */
 function formatEntryDateTime(entry: { date: string; timestamp?: number }): { date: string; time: string } {
@@ -37,6 +39,7 @@ export default function JournalPage() {
 
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [justSaved, setJustSaved] = useState(false);
+  const [selectedMood, setSelectedMood] = useState('');
   const [expandedEntry, setExpandedEntry] = useState<string | null>(null);
 
   // All entries newest-first
@@ -54,9 +57,10 @@ export default function JournalPage() {
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    saveJournalEntry({ responses });
+    saveJournalEntry({ responses, mood: selectedMood });
     // Clear form and show brief success indicator
     setResponses({});
+    setSelectedMood('');
     setJustSaved(true);
     setTimeout(() => setJustSaved(false), 3000);
   };
@@ -67,11 +71,28 @@ export default function JournalPage() {
         title="Journal"
         icon="edit_note"
         right={
-          journalEntries.length > 0 ? (
-            <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
-              {journalEntries.length} entr{journalEntries.length === 1 ? 'y' : 'ies'}
-            </span>
-          ) : undefined
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          {journalEntries.length > 0 ? (
+              <span style={{ fontSize: '0.8rem', color: 'var(--color-outline)', fontWeight: 500 }}>
+                {journalEntries.length} entr{journalEntries.length === 1 ? 'y' : 'ies'}
+              </span>
+            ) : null}
+            <Link
+              to="/journal-analytics"
+              aria-label="Analytics"
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--color-primary)', textDecoration: 'none',
+                background: 'var(--color-surface-container-high)',
+                borderRadius: '50%', width: '32px', height: '32px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--color-primary-container)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--color-surface-container-high)')}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>insights</span>
+            </Link>
+          </div>
         }
       />
 
@@ -110,6 +131,43 @@ export default function JournalPage() {
                 <span className="material-symbols-outlined">edit_note</span>
                 <h3 className="section-title">New Entry</h3>
               </div>
+
+
+              <div style={{
+                background: 'var(--color-surface-container-lowest)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.25rem 1.5rem',
+                boxShadow: 'var(--shadow-card)',
+              }}>
+                <label style={{ display: 'block' }}>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.35rem' }}>
+                    How are you feeling?
+                  </p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', marginBottom: '0.875rem', lineHeight: 1.5 }}>
+                    Select a mood that best describes your current state.
+                  </p>
+                </label>
+                <select
+                  value={selectedMood}
+                  onChange={(e) => setSelectedMood(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--color-outline-variant)',
+                    background: 'var(--color-surface)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '1rem',
+                    color: 'var(--color-on-surface)'
+                  }}
+                >
+                  <option value="">Select a mood</option>
+                  {MOODS.map(m => (
+                    <option key={m.label} value={m.label}>{m.icon} {m.label}</option>
+                  ))}
+                </select>
+              </div>
+
 
               {journalPrompts.map((prompt) => (
                 <div key={prompt.id} style={{
@@ -246,6 +304,21 @@ export default function JournalPage() {
                           expand_more
                         </span>
                       </div>
+
+
+                        {entry.mood && (
+                          <div style={{
+                            padding: '1rem 1.25rem 0',
+                            display: 'flex', alignItems: 'center', gap: '0.5rem'
+                          }}>
+                            <span style={{ fontSize: '0.7rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                              Mood:
+                            </span>
+                            <span style={{ fontSize: '0.875rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>
+                              {MOODS.find(m => m.label === entry.mood)?.icon} {entry.mood}
+                            </span>
+                          </div>
+                        )}
 
                       {/* Expanded responses */}
                       {isExpanded && (
