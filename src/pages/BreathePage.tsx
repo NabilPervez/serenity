@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { addTimelineEntry, getTimelineEntries, type TimelineEntry } from '../data/db';
 import TopBar from '../components/TopBar';
+import { playBreathePhaseSound, playCompletionSound } from '../utils/audio';
 
 // ── Phase definitions ──────────────────────────────────────────
-// Box breathing: inhale 4s → hold 4s → exhale 5s → rest 2s
+// Box breathing: inhale 4s → hold 4s → exhale 5s → rest 4s
 const PHASES = [
   {
     key: 'inhale',
@@ -30,7 +31,7 @@ const PHASES = [
   {
     key: 'rest',
     label: 'Rest',
-    seconds: 2,
+    seconds: 4,
     circleScale: 0.88,
     instruction: 'Pause gently at the bottom. Notice the stillness. You are exactly where you need to be.',
   },
@@ -122,14 +123,17 @@ export default function BreathePage() {
             notes: 'Completed a box breathing session',
             date: new Date().toISOString().split('T')[0],
           }).then(loadEntries);
+          playCompletionSound('set');
           setDisplay((prev) => ({ ...prev, status: 'complete' }));
           return;
         }
+        playCompletionSound('rep');
         s.cycle += 1;
       }
 
       s.phaseIdx = nextIdx;
       s.countdown = PHASES[nextIdx].seconds;
+      playBreathePhaseSound(PHASES[nextIdx].key);
     }
 
     flush();
@@ -139,6 +143,7 @@ export default function BreathePage() {
     sessionRef.current = { running: true, phaseIdx: 0, cycle: 1, countdown: PHASES[0].seconds };
     setDisplay({ status: 'running', phaseIdx: 0, cycle: 1, countdown: PHASES[0].seconds });
     stopInterval();
+    playBreathePhaseSound(PHASES[0].key);
     intervalRef.current = setInterval(tick, 1000);
   };
 
@@ -338,7 +343,7 @@ export default function BreathePage() {
               {status === 'complete'
                 ? 'You completed 10 cycles of box breathing. Your nervous system has been reset. Take a moment to notice how you feel.'
                 : status === 'idle'
-                ? 'In for 4 · Hold for 4 · Out for 5 · Rest for 2. Ten cycles for a complete nervous system reset.'
+                ? 'In for 4 · Hold for 4 · Out for 5 · Rest for 4. Ten cycles for a complete nervous system reset.'
                 : phase.instruction}
             </p>
           </div>
